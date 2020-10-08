@@ -14,8 +14,16 @@ int fib(int n)
     }
     return sum;
 }
+//recursion
+int rfib(int n){
+if (n<=1){
+    return n;
+}
+return rfib(n-1)+ rfib(n-2);
+}
 int main()
 {
-    printf("%d \n", fib(10));
+    printf("%d \n", fib(5));
+    printf("%d \n", rfib(5));
     return 0;
 }
