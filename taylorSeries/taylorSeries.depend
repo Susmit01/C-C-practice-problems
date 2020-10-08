@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1602138926 source:c:\users\hp\documents\c++ prog\taylorseries\main.c
+	<stdio.h>
+	<stdlib.h>
+
