@@ -13,12 +13,14 @@ void append( struct array *arr, int x)
         arr->a[ arr->len++] = x;
 
 }
+//dosplay
 void display (struct array arr)
 {
     int i;
     for (i=0; i<arr.len;i++)
         printf(" %d ",arr.a[i]);
 }
+//insert
 void insert (struct array *arr, int index, int x)
 {
     int i;
@@ -30,11 +32,26 @@ void insert (struct array *arr, int index, int x)
         arr->len++;
     }
 }
+//delete
+int delete(struct array *arr, int index)
+{
+    int i, x=0;
+    if (index >0 && index <arr->len)
+    {
+        x= arr->a[index];
+        for (i=index; i<arr->len-1;i++)
+            arr->a[i]= arr->a[i+1];
+        arr->len--;
+        return x;
+    }
+    return 0;
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
     //append(&arr, 10);
-    insert(&arr, 5, 4);
+    //insert(&arr, 4, 4);
+    printf("%d\n", delete(&arr, 2));
     display(arr);
     return 0;
 }
