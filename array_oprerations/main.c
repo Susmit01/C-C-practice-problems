@@ -46,12 +46,24 @@ int delete(struct array *arr, int index)
     }
     return 0;
 }
+//linear search
+int linearSearch(struct array arr,int key)
+{
+    int i;
+    for (i=0; i< arr.len; i++)
+    {
+        if (key== arr.a[i])
+            return i;
+    }
+    return -1;
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
     //append(&arr, 10);
     //insert(&arr, 4, 4);
-    printf("%d\n", delete(&arr, 2));
+    //printf("%d\n", delete(&arr, 2));
+    printf("%d\n", linearSearch(arr, 4));
     display(arr);
     return 0;
 }
