@@ -46,6 +46,14 @@ int delete(struct array *arr, int index)
     }
     return 0;
 }
+//swap
+void swap(int *x, int *y)
+{
+    int temp;
+    temp=*x;
+    *x=*y;
+    *y= temp;
+}
 //linear search
 int linearSearch(struct array arr,int key)
 {
