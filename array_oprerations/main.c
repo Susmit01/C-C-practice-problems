@@ -86,6 +86,21 @@ int binarySearch(struct array arr, int key)
     }
     return -1;
 }
+//recursion
+int rBinarySearch(int a[], int l, int h, int key)
+{
+    int mid;
+    if (l<=h)
+    {
+        mid=(l+h)/2;
+        if (key==a[mid])
+            return mid;
+        else if (key < a[mid])
+            return rBinarySearch(a, l, mid-1, key);
+        else return rBinarySearch(a, mid+1, h, key);
+    }
+    return -1;
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
@@ -93,7 +108,8 @@ int main()
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
     //printf("%d\n", linearSearch(&arr, 4));
-    printf("%d\n", binarySearch(arr,5));
+    //printf("%d\n", binarySearch(arr,5));
+    printf("%d\n", rBinarySearch(arr.a,0, arr.len, 3));
     display(arr);
     return 0;
 }
