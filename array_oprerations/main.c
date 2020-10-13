@@ -126,7 +126,8 @@ int main()
     //printf("%d\n", linearSearch(&arr, 4));
     //printf("%d\n", binarySearch(arr,5));
     //printf("%d\n", rBinarySearch(arr.a,0, arr.len, 3));
-    printf("%d\n",get(arr, 2));
+    //printf("%d\n",get(arr, 2));
+    set(&arr, 2,11);
     display(arr);
     return 0;
 }
