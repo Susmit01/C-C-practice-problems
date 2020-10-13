@@ -131,6 +131,16 @@ int max(struct array arr)
     }
     return max;
 }
+int sum(struct array arr)
+{
+    int sum=0;
+    int i=0;
+    for(;i<arr.len;i++)
+    {
+        sum+=arr.a[i];
+    }
+    return sum;
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
@@ -142,7 +152,8 @@ int main()
     //printf("%d\n", rBinarySearch(arr.a,0, arr.len, 3));
     //printf("%d\n",get(arr, 2));
     //set(&arr, 2,11);
-    printf("%d\n", max(arr));
+    //printf("%d\n", max(arr));
+    printf("%d\n", sum(arr));
     display(arr);
     return 0;
 }
