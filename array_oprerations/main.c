@@ -117,6 +117,20 @@ void set(struct array *arr, int index, int val)
         arr->a[index]=val;
     }
 }
+int max(struct array arr)
+{
+    int max=arr.a[0];
+    int i=0;
+    while (i<arr.len)
+    {
+        if (arr.a[i]>max)
+           {
+                max = arr.a[i];
+           }
+        i++;
+    }
+    return max;
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
@@ -127,7 +141,8 @@ int main()
     //printf("%d\n", binarySearch(arr,5));
     //printf("%d\n", rBinarySearch(arr.a,0, arr.len, 3));
     //printf("%d\n",get(arr, 2));
-    set(&arr, 2,11);
+    //set(&arr, 2,11);
+    printf("%d\n", max(arr));
     display(arr);
     return 0;
 }
