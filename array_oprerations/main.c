@@ -101,6 +101,22 @@ int rBinarySearch(int a[], int l, int h, int key)
     }
     return -1;
 }
+//get function
+int get(struct array arr, int index)
+{
+    if (index >=0 && index <arr.len)
+    {
+        return arr.a[index];
+    }
+    return -1;
+}
+void set(struct array *arr, int index, int val)
+{
+    if (index >=0 && index <arr->len)
+    {
+        arr->a[index]=val;
+    }
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
@@ -109,7 +125,8 @@ int main()
     //printf("%d\n", delete(&arr, 2));
     //printf("%d\n", linearSearch(&arr, 4));
     //printf("%d\n", binarySearch(arr,5));
-    printf("%d\n", rBinarySearch(arr.a,0, arr.len, 3));
+    //printf("%d\n", rBinarySearch(arr.a,0, arr.len, 3));
+    printf("%d\n",get(arr, 2));
     display(arr);
     return 0;
 }
