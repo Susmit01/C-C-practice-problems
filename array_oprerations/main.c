@@ -141,6 +141,12 @@ int sum(struct array arr)
     }
     return sum;
 }
+int average(struct array arr)
+{
+    int s;
+    s=sum(arr);
+    return s/arr.len;
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
@@ -153,7 +159,8 @@ int main()
     //printf("%d\n",get(arr, 2));
     //set(&arr, 2,11);
     //printf("%d\n", max(arr));
-    printf("%d\n", sum(arr));
+    //printf("%d\n", sum(arr));
+    printf("%d\n",average(arr));
     display(arr);
     return 0;
 }
