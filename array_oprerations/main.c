@@ -147,6 +147,22 @@ int average(struct array arr)
     s=sum(arr);
     return s/arr.len;
 }
+//reverse
+void reverse (struct array *arr)
+{
+    //aux array
+    int *b;
+    int i, j;
+    b = (int *)malloc(arr->len*sizeof(int));
+    for (i=arr->len-1, j=0;i>=0; i--, j++)
+    {
+        b[j]= arr->a[i];
+    }
+    for (i=0; i< arr->len;i++)
+    {
+        arr->a[i]=b[i];
+    }
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
@@ -160,7 +176,8 @@ int main()
     //set(&arr, 2,11);
     //printf("%d\n", max(arr));
     //printf("%d\n", sum(arr));
-    printf("%d\n",average(arr));
+    //printf("%d\n",average(arr));
+    reverse(&arr);
     display(arr);
     return 0;
 }
