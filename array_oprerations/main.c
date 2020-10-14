@@ -163,6 +163,7 @@ void reverse (struct array *arr)
         arr->a[i]=b[i];
     }
 }
+//reverse using swap function
 void reverse2(struct array *arr)
 {
     int i,j;
@@ -171,9 +172,23 @@ void reverse2(struct array *arr)
         swap(&arr->a[i], &arr->a[j]);
     }
 }
+//inserting elements in sorted array
+void insertsort(struct array *arr, int x)
+{
+    int i= arr->len-1;
+    if(arr->len == arr ->size)
+    return;
+    while (i>=0 && arr->a[i]>x)
+    {
+        arr->a[i+1]= arr->a[i];
+        i--;
+    }
+    arr->a[i+1]=x;
+    arr->len++;
+}
 int main()
 {
-    struct array arr={{2, 3, 4,5, 6}, 10, 5};
+    struct array arr={{2, 3, 4,6,8}, 10, 5};
     //append(&arr, 10);
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
@@ -186,7 +201,8 @@ int main()
     //printf("%d\n", sum(arr));
     //printf("%d\n",average(arr));
     //reverse(&arr);
-    reverse2(&arr);
+    //reverse2(&arr);
+    insertsort(&arr, 7);
     display(arr);
     return 0;
 }
