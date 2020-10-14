@@ -197,9 +197,25 @@ int isSorted (struct array arr)
     }
     return 1;
 }
+//rearrange positive and negative numbers
+void rearrange( struct array *arr)
+{
+    int i, j;
+    i=0;
+    j= arr->len-1;
+    while (i<j)
+    {
+        while(arr->a[i]<0)
+            i++;
+        while(arr->a[i]>=0)
+            j--;
+        if (i<j)
+            swap(&arr->a[i], &arr->a[j]);
+    }
+}
 int main()
 {
-    struct array arr={{2, 3, 4,10,8}, 10, 5};
+    struct array arr={{2,-5, 4,10,-11,8}, 10, 6};
     //append(&arr, 10);
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
@@ -214,7 +230,8 @@ int main()
     //reverse(&arr);
     //reverse2(&arr);
     //insertsort(&arr, 7);
-    printf("%d\n", isSorted(arr));
+    //printf("%d\n", isSorted(arr));
+    rearrange(&arr);
     display(arr);
     return 0;
 }
