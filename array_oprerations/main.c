@@ -186,9 +186,20 @@ void insertsort(struct array *arr, int x)
     arr->a[i+1]=x;
     arr->len++;
 }
+//checck if sorted
+int isSorted (struct array arr)
+{
+    int i;
+    for (i=0; i <arr.len-1; i++)
+    {
+        if (arr.a[i]>arr.a[i+1])
+            return 0;
+    }
+    return 1;
+}
 int main()
 {
-    struct array arr={{2, 3, 4,6,8}, 10, 5};
+    struct array arr={{2, 3, 4,10,8}, 10, 5};
     //append(&arr, 10);
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
@@ -202,7 +213,8 @@ int main()
     //printf("%d\n",average(arr));
     //reverse(&arr);
     //reverse2(&arr);
-    insertsort(&arr, 7);
+    //insertsort(&arr, 7);
+    printf("%d\n", isSorted(arr));
     display(arr);
     return 0;
 }
