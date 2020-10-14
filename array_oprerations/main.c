@@ -163,6 +163,14 @@ void reverse (struct array *arr)
         arr->a[i]=b[i];
     }
 }
+void reverse2(struct array *arr)
+{
+    int i,j;
+    for(i=0, j=arr->len-1; i<j;i++,j--)
+    {
+        swap(&arr->a[i], &arr->a[j]);
+    }
+}
 int main()
 {
     struct array arr={{2, 3, 4,5, 6}, 10, 5};
@@ -177,7 +185,8 @@ int main()
     //printf("%d\n", max(arr));
     //printf("%d\n", sum(arr));
     //printf("%d\n",average(arr));
-    reverse(&arr);
+    //reverse(&arr);
+    reverse2(&arr);
     display(arr);
     return 0;
 }
