@@ -240,7 +240,29 @@ struct array* Union (struct array *arr1, struct array *arr2)
     arr3->size=10;
     return arr3;
 }
+//intersection
+struct array* intersection(struct array *arr1, struct array *arr2)
+{
+    int i,j,k;
+    i=j=k=0;
+    struct array *arr3= (struct array *)malloc (sizeof(struct array));
+    while (i<arr1->len && arr2->len)
+    {
+       if(arr1->a[i] < arr2 ->a[j])
+            i++;
+       else if (arr2->a[j] < arr1->a[i])
+                j++;
+            else if(arr1->a[i]==arr2->a[j])
+               {
+                    arr3->a[k++]=arr1->a[i++];
+                    j++;
+               }
+    }
 
+    arr3->len= k;
+    arr3->size=10;
+    return arr3;
+}
 int main()
 {
     struct array arr={{2,6,10,15,25}, 10, 4};
@@ -263,7 +285,8 @@ int main()
     //insertsort(&arr, 7);
     //printf("%d\n", isSorted(arr));
     //rearrange(&arr);
-    arr3= Union(&arr, &arr2);
+    //arr3= Union(&arr, &arr2);
+    arr3= intersection(&arr, &arr2);
     display(*arr3);
     return 0;
 }
