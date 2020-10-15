@@ -219,7 +219,7 @@ struct array* Union (struct array *arr1, struct array *arr2)
     int i,j,k;
     i=j=k=0;
     struct array *arr3= (struct array *)malloc (sizeof(struct array));
-    while (i<arr1->len && arr2->len)
+    while (i<arr1->len && j<arr2->len)
     {
        if(arr1->a[i]< arr2 ->a[j])
             arr3->a[k++]= arr1->a[i++];
@@ -246,7 +246,7 @@ struct array* intersection(struct array *arr1, struct array *arr2)
     int i,j,k;
     i=j=k=0;
     struct array *arr3= (struct array *)malloc (sizeof(struct array));
-    while (i<arr1->len && arr2->len)
+    while (i<arr1->len && j<arr2->len)
     {
        if(arr1->a[i] < arr2 ->a[j])
             i++;
@@ -263,9 +263,34 @@ struct array* intersection(struct array *arr1, struct array *arr2)
     arr3->size=10;
     return arr3;
 }
+//difference
+struct array* difference (struct array *arr1, struct array *arr2)
+{
+    int i,j,k;
+    i=j=k=0;
+    struct array *arr3= (struct array *)malloc (sizeof(struct array));
+    while (i<arr1->len && j<arr2->len)
+    {
+       if(arr1->a[i]< arr2 ->a[j])
+            arr3->a[k++]= arr1->a[i++];
+       else if (arr2->a[j]<arr1->a[i])
+                j++;
+            else
+               {
+                    i++;
+                    j++;
+               }
+    }
+    for(;i<arr1->len;i++)
+        arr3->a[k++]= arr1->a[i];
+
+    arr3->len= k;
+    arr3->size=10;
+    return arr3;
+}
 int main()
 {
-    struct array arr={{2,6,10,15,25}, 10, 4};
+    struct array arr={{2,6,10,15,25}, 10, 5};
     struct array arr2 = {{3,6,7,15,20}, 10,5};
     struct array *arr3;
 
@@ -286,7 +311,8 @@ int main()
     //printf("%d\n", isSorted(arr));
     //rearrange(&arr);
     //arr3= Union(&arr, &arr2);
-    arr3= intersection(&arr, &arr2);
+    //arr3= intersection(&arr, &arr2);
+    arr3= difference(&arr, &arr2);
     display(*arr3);
     return 0;
 }
