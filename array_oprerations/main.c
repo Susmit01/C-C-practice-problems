@@ -213,9 +213,32 @@ void rearrange( struct array *arr)
             swap(&arr->a[i], &arr->a[j]);
     }
 }
+struct array* merge (struct array *arr1, struct array *arr2)
+{
+    int i,j,k;
+    i=j=k=0;
+    struct array *arr3= (struct array *)malloc (sizeof(struct array));
+    while (i<arr1->len && arr2->len)
+    {
+       if(arr1->a[i]< arr2 ->a[j])
+            arr3->a[k++]= arr1->a[i++];
+       else
+        arr3->a[k++]= arr2->a[j++];
+    }
+    for(;i<arr1->len;i++)
+        arr3->a[k++]= arr1->a[i];
+     for(;j<arr2->len;j++)
+        arr3->a[k++]= arr2->a[j];
+    arr3->len= arr1->len + arr2->len;
+    arr3->size=8;
+    return arr3;
+}
 int main()
 {
-    struct array arr={{2,-5, 4,10,-11,8}, 10, 6};
+    struct array arr={{2,4,6,8}, 10, 4};
+    struct array arr2 = {{3,5,7,9}, 10,4};
+    struct array *arr3;
+
     //append(&arr, 10);
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
@@ -231,7 +254,8 @@ int main()
     //reverse2(&arr);
     //insertsort(&arr, 7);
     //printf("%d\n", isSorted(arr));
-    rearrange(&arr);
-    display(arr);
+    //rearrange(&arr);
+    arr3= merge(&arr, &arr2);
+    display(*arr3);
     return 0;
 }
