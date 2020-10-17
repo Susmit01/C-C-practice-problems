@@ -3,7 +3,7 @@
 
 struct array
 {
-    int a[10];
+    int *a;
     int size;
     int len;
 };
@@ -297,7 +297,7 @@ int main()
     int ch, x, index;
     printf("Enter the size of the array \n");
     scanf("%d", &arr1.size);
-    arr1.a=(int *)malloc(arr1.size*sizeof(int));
+    arr1.a =(int *)malloc(arr1.size*sizeof(int));
 
     printf("Menu \n");
     printf("1. Insert \n");
@@ -332,12 +332,11 @@ int main()
         printf("The sum of the array is\n", sum(arr1));
         break;
     case 5:
-        printf("The reversed array  is \n");
-        reverse(&arr1);
+        display(arr1);
+
     default: printf("Choose again");
     }
     }while(ch <6);
-    display(arr1);
     //append(&arr, 10);
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
