@@ -171,6 +171,8 @@ void reverse2(struct array *arr)
     {
         swap(&arr->a[i], &arr->a[j]);
     }
+    for (i=0; i< arr->len; i++)
+        printf("%d ", arr->a[i]);
 }
 //inserting elements in sorted array
 void insertsort(struct array *arr, int x)
@@ -288,12 +290,54 @@ struct array* difference (struct array *arr1, struct array *arr2)
     arr3->size=10;
     return arr3;
 }
+
 int main()
 {
-    struct array arr={{2,6,10,15,25}, 10, 5};
-    struct array arr2 = {{3,6,7,15,20}, 10,5};
-    struct array *arr3;
+    struct array arr1;
+    int ch, x, index;
+    printf("Enter the size of the array \n");
+    scanf("%d", &arr1.size);
+    arr1.a=(int *)malloc(arr1.size*sizeof(int));
 
+    printf("Menu \n");
+    printf("1. Insert \n");
+    printf("2. Delete \n");
+    printf("3. Search\n");
+    printf("4. Sum \n");
+    printf("5. Reverse \n");
+    printf("6. exit \n");
+    printf("Enter your choice number \n");
+    scanf("%d", &ch);
+    do{
+    switch(ch)
+    {
+    case 1:
+        printf("Enter element and choice \n");
+        scanf("%d%d",&x, &index);
+        insert(&arr1, index, x);
+        break;
+    case 2:
+        printf("Enter index \n");
+        scanf("%d", &x);
+        x= delete(&arr1, index);
+        printf("Deleted element is %d\n", x);
+        break;
+    case 3:
+        printf("Enter element to search");
+        scanf("%d", &x);
+        index = linearSearch(&arr1, x);
+        printf("Enter index %d", index);
+        break;
+    case 4:
+        printf("The sum of the array is\n", sum(arr1));
+        break;
+    case 5:
+        printf("The reversed array  is \n");
+        reverse(&arr1);
+    default: printf("Choose again");
+    }
+    }while(ch <6);
+    display(arr1);
     //append(&arr, 10);
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
@@ -312,7 +356,5 @@ int main()
     //rearrange(&arr);
     //arr3= Union(&arr, &arr2);
     //arr3= intersection(&arr, &arr2);
-    arr3= difference(&arr, &arr2);
-    display(*arr3);
     return 0;
 }
