@@ -290,11 +290,26 @@ struct array* difference (struct array *arr1, struct array *arr2)
     arr3->size=10;
     return arr3;
 }
-
+//finding missing element
+//in first n natural numbers
+int findMissing1(struct array arr)
+{
+    int array_sum, i, sum;
+    sum= arr.len*(arr.len+1)/2;
+    array_sum=0;
+    for(i=0; i <arr.len; i++)
+    {
+        array_sum+= arr.a[i];
+    }
+    return (sum-array_sum);
+}
 int main()
 {
-    struct array arr1;
+    struct array arr1={{1,2,3,5},8, 4};
     int ch, x, index;
+    x= findMissing1(arr1);
+    printf("\nMissing element is %d", x);
+    /*
     printf("Enter the size of the array \n");
     scanf("%d", &arr1.size);
     arr1.a =(int *)malloc(arr1.size*sizeof(int));
@@ -337,6 +352,7 @@ int main()
     default: printf("Choose again");
     }
     }while(ch <6);
+    */
     //append(&arr, 10);
     //insert(&arr, 4, 4);
     //printf("%d\n", delete(&arr, 2));
