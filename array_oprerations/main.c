@@ -303,12 +303,26 @@ int findMissing1(struct array arr)
     }
     return (sum-array_sum);
 }
+//when you know first and last elements of consecutive array
+void findMissing2(struct array arr)
+{
+    int i,diff;
+    diff= arr.len-0;
+    for (i=0; i<arr.len; i++)
+    {
+        if((arr.a[i]-i)!=0)
+        {
+            printf("Missing element is %d", i+diff);
+            break;
+        }
+    }
+}
 int main()
 {
-    struct array arr1={{1,2,3,5},8, 4};
+    struct array arr={{4,5,6,8,9,10},20, 6};
     int ch, x, index;
-    x= findMissing1(arr1);
-    printf("\nMissing element is %d", x);
+    findMissing2(arr);
+
     /*
     printf("Enter the size of the array \n");
     scanf("%d", &arr1.size);
